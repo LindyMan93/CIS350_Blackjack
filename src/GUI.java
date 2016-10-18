@@ -1,5 +1,15 @@
-import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.BoxLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import edu.gvsu.GVpile;
 
 /**
@@ -64,7 +74,7 @@ public class GUI implements ActionListener {
 	/**
 	 * This method will run always. It calls the GUI() constructor.
 	 * 
-	 * @param args
+	 * @param args Main arguments from commandline.
 	 */
 	public static void main(final String[] args) {
 
@@ -186,7 +196,7 @@ public class GUI implements ActionListener {
 	 * Once the button is determined it will be follow the correct course
 	 * of action. Then all the messages will be updated.
 	 * 
-	 * @param e
+	 * @param e event from button press
 	 */
 	public final void actionPerformed(final ActionEvent e) {
 

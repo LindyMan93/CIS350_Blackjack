@@ -121,10 +121,18 @@ public class BlackjackGame {
 	 */
 	private void clearTable() {
 
-		while (dealerCards.pop() != null);
-		while (playerCards.pop() != null);
-		while (dealerTempCards.pop() != null);
-		while (playerTempCards.pop() != null);
+		while (dealerCards.pop() != null) {
+			assert true;
+		}
+		while (playerCards.pop() != null) {
+			assert true;
+		}
+		while (dealerTempCards.pop() != null) {
+			assert true;
+		}
+		while (playerTempCards.pop() != null) {
+			assert true;
+		}
 	}
 
 	/**
@@ -322,8 +330,8 @@ public class BlackjackGame {
 	 * to it. hand is just a String to indicate which player's
 	 * ace count will be updated. the local variable x is the 
 	 * cards value and will be updated if it is a face card.
-	 * @param cardCheck
-	 * @param hand
+	 * @param cardCheck GVcard associated with player card
+	 * @param hand String to indicate which player's ace count is updated
 	 * @return x
 	 */
 	private int realCardValue(final GVcard cardCheck, final String hand) {
@@ -369,7 +377,7 @@ public class BlackjackGame {
 	 * This method will be called after each new card is dealt.
 	 * It will check to see if the player or dealer has an ace.
 	 * Then it will update the playerCount or dealerCount accordingly.
-	 * @param hand
+	 * @param hand See if player has ace
 	 */
 	private void adjustHandValueAce(final String hand) {
 		if (hand.equals("player") && numberOfAcesp > 0 
