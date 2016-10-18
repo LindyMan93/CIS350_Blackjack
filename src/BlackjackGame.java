@@ -39,8 +39,10 @@ public class BlackjackGame {
 	private static final String NOT_ENOUGH = "You dont have enough credits";
 	private static final String TABLE_MIN = "The table minimum is 5";
 	private static final String TABLE_MAX = "The table maximum is 250";
-	private static final String VALID_INT = "Must enter an integer greater than 0";
-	private static final String BET_MESS = "To change bet click bet. \nAmount to Bet: ";
+	private static final String VALID_INT
+		= "Must enter an integer greater than 0";
+	private static final String BET_MESS
+		= "To change bet click bet. \nAmount to Bet: ";
 
 	/**
 	 * 
