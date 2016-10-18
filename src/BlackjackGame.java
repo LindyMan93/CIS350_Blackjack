@@ -14,21 +14,21 @@ import javax.swing.JOptionPane;
  */
 
 public class BlackjackGame {
-	private final int faceCard = 10;
-	private final int jack = 11;
-	private final int queen = 12;
-	private final int king = 13;
-	private final int ace = 14;
-	private final int newAce = 11;
-	private final int aceDiff = 10;
-	private final int minDeckCards = 15;
-	private final int dealerMinHand = 17;
-	private final int cardIndent = 20;
-	private final int blackjack = 21;
-	private final int notBlackjack = 22;
-	private final int maxBet = 250;
-	private final int minBet = 5;
-	private final int credits = 50;
+	private static final int FACECARD = 10;
+	private static final int JACK = 11;
+	private static final int QUEEN = 12;
+	private static final int KING = 13;
+	private static final int ACE = 14;
+	private static final int NEWACE = 11;
+	private static final int ACE_DIFF = 10;
+	private static final int MIN_DECK_CARDS = 15;
+	private static final int DEALER_MIN_HAND = 17;
+	private static final int CARD_INDENT = 20;
+	private static final int BLACKJACK = 21;
+	private static final int NOT_BLACKJACK = 22;
+	private static final int MAX_BET = 250;
+	private static final int MIN_BET = 5;
+	private static final int CREDITS = 50;
 	private int dealerCount, playerCount;
 	private int creditBalance, bet;
 	private int numberOfAcesp = 0, numberOfAcesd = 0;
@@ -36,18 +36,18 @@ public class BlackjackGame {
 	private GVpile deck, playerCards;
 	private GVpile playerTempCards, dealerCards, dealerTempCards;
 	private String message;
-	private final String notEnough = "You dont have enough credits";
-	private final String tableMin = "The table minimum is 5";
-	private final String tableMax = "The table maximum is 250";
-	private final String validInt = "Must enter an integer greater than 0";
-	private final String betMess = "To change bet click bet. \nAmount to Bet: ";
+	private static final String NOT_ENOUGH = "You dont have enough credits";
+	private static final String TABLE_MIN = "The table minimum is 5";
+	private static final String TABLE_MAX = "The table maximum is 250";
+	private static final String VALID_INT = "Must enter an integer greater than 0";
+	private static final String BET_MESS = "To change bet click bet. \nAmount to Bet: ";
 
 	/**
 	 * 
 	 */
 	public BlackjackGame() {
 
-		creditBalance = credits;
+		creditBalance = CREDITS;
 		bet = 0;
 		deck = new GVpile(1, 0, 0);
 		createHandPiles();
@@ -83,10 +83,10 @@ public class BlackjackGame {
 	 */
 	private void createHandPiles() {
 
-		playerCards = new GVpile(0, cardIndent, 0);
-		dealerCards = new GVpile(0, cardIndent, 0);
-		dealerTempCards = new GVpile(0, cardIndent, 0);
-		playerTempCards = new GVpile(0, cardIndent, 0);
+		playerCards = new GVpile(0, CARD_INDENT, 0);
+		dealerCards = new GVpile(0, CARD_INDENT, 0);
+		dealerTempCards = new GVpile(0, CARD_INDENT, 0);
+		playerTempCards = new GVpile(0, CARD_INDENT, 0);
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class BlackjackGame {
 
 		message = "Dealing Next Hand";
 		//checking to see if there are enough cards for the hand
-		if (deck.getComponentCount() < minDeckCards) {
+		if (deck.getComponentCount() < MIN_DECK_CARDS) {
 			message = "Starting a New Shoe";
 			newShoe();
 		}
@@ -203,7 +203,7 @@ public class BlackjackGame {
 		adjustHandValueAce("dealer");
 
 		//check if player has blackjack
-		if (playerCount == blackjack) {
+		if (playerCount == BLACKJACK) {
 			message = "Player Blackjack!";
 			creditBalance = creditBalance + (bet * 2) + (bet / 2);
 		}
@@ -221,7 +221,7 @@ public class BlackjackGame {
 		playerCards.push(c);
 		playerCards.topCard().faceUp();
 		adjustHandValueAce("player");
-		if (playerCount > blackjack) {
+		if (playerCount > BLACKJACK) {
 			message = "Player Bust";
 			creditBalance -= bet;
 		}
@@ -254,7 +254,7 @@ public class BlackjackGame {
 		dealerCards.topCard().faceUp();
 		dealerCards.push(dealerTempCards.pop());
 		dealerCards.topCard().faceUp();
-		while (dealerCountTotal() < dealerMinHand) {
+		while (dealerCountTotal() < DEALER_MIN_HAND) {
 			dealerDraw();
 		}
 		if (checkWinner()) {
@@ -295,22 +295,22 @@ public class BlackjackGame {
 	 * it is a valid choice, then update the bet.
 	 */
 	public final void placeBet() {
-		String sbet = JOptionPane.showInputDialog(betMess);
+		String sbet = JOptionPane.showInputDialog(BET_MESS);
 		try {
 			bet = Integer.parseInt(sbet);
 			if (bet > creditBalance) {
-				JOptionPane.showMessageDialog(null, notEnough);
+				JOptionPane.showMessageDialog(null, NOT_ENOUGH);
 				placeBet();
 			}
-			if (bet < minBet) {
-				JOptionPane.showMessageDialog(null, tableMin);
+			if (bet < MIN_BET) {
+				JOptionPane.showMessageDialog(null, TABLE_MIN);
 				placeBet();
 			}
-			if (bet > maxBet) {
-				JOptionPane.showMessageDialog(null, tableMax);
+			if (bet > MAX_BET) {
+				JOptionPane.showMessageDialog(null, TABLE_MAX);
 			}
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, validInt);
+			JOptionPane.showMessageDialog(null, VALID_INT);
 			placeBet();
 		}
 	}
@@ -336,9 +336,9 @@ public class BlackjackGame {
 	 */
 	private int realCardValue(final GVcard cardCheck, final String hand) {
 		int x = cardCheck.getValue();
-		if (x == jack || x == queen || x == king || x == ace) {
-			if (x == ace) {
-				x = newAce;
+		if (x == JACK || x == QUEEN || x == KING || x == ACE) {
+			if (x == ACE) {
+				x = NEWACE;
 				if (hand.equals("player")) {
 					numberOfAcesp += 1;
 				}
@@ -348,7 +348,7 @@ public class BlackjackGame {
 				System.out.println("cards values being added: " + x);
 				return x;
 			} else {
-				x = faceCard;
+				x = FACECARD;
 				System.out.println("cards values being added: " + x);
 				return x;
 			}
@@ -365,11 +365,11 @@ public class BlackjackGame {
 	 */
 	private boolean checkWinner() {
 		boolean playerBetterScore = (playerCount > dealerCount 
-				&& playerCount <= blackjack);
-		boolean dealerBustScore = (playerCount <= blackjack 
-				&& dealerCount > blackjack);
-		boolean dealerBJ = (dealerCount == blackjack);
-		boolean playerBJ = (playerCount == blackjack && !dealerBJ);
+				&& playerCount <= BLACKJACK);
+		boolean dealerBustScore = (playerCount <= BLACKJACK 
+				&& dealerCount > BLACKJACK);
+		boolean dealerBJ = (dealerCount == BLACKJACK);
+		boolean playerBJ = (playerCount == BLACKJACK && !dealerBJ);
 		return playerBetterScore || dealerBustScore || playerBJ;
 	}
 
@@ -381,26 +381,26 @@ public class BlackjackGame {
 	 */
 	private void adjustHandValueAce(final String hand) {
 		if (hand.equals("player") && numberOfAcesp > 0 
-				&& playerCount > blackjack) {
+				&& playerCount > BLACKJACK) {
 			if (numberOfAcesp == 1 || (numberOfAcesp == 2 
-					&& playerCount == notBlackjack)) {
-				playerCount = playerCount - aceDiff;
+					&& playerCount == NOT_BLACKJACK)) {
+				playerCount = playerCount - ACE_DIFF;
 				numberOfAcesp = numberOfAcesp - 1;
 			}
-			if (numberOfAcesp == 2 && playerCount != notBlackjack) {
-				playerCount = playerCount - (aceDiff * 2);
+			if (numberOfAcesp == 2 && playerCount != NOT_BLACKJACK) {
+				playerCount = playerCount - (ACE_DIFF * 2);
 				numberOfAcesp = numberOfAcesp - 2;
 			}
 		}
 		if (hand.equals("dealer") && numberOfAcesd > 0 
-				&& dealerCount > blackjack) {
+				&& dealerCount > BLACKJACK) {
 			if (numberOfAcesd == 1 || (numberOfAcesd == 2 
-					&& dealerCount == notBlackjack)) {
-				dealerCount = dealerCount - aceDiff;
+					&& dealerCount == NOT_BLACKJACK)) {
+				dealerCount = dealerCount - ACE_DIFF;
 				numberOfAcesd = numberOfAcesd - 1;
 			}
-			if (numberOfAcesd == 2 && dealerCount != notBlackjack) {
-				dealerCount = dealerCount - (aceDiff * 2);
+			if (numberOfAcesd == 2 && dealerCount != NOT_BLACKJACK) {
+				dealerCount = dealerCount - (ACE_DIFF * 2);
 				numberOfAcesd = numberOfAcesd - 2;
 			}
 		}

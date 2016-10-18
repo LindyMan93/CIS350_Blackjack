@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.2-dev-20160306-90c514b" sequence="1" timestamp="1476807041297" analysisTimestamp="1476807040713" release="">
+  <Project projectName="CIS350_Blackjack">
+    <Jar>/home/emerson/repos/CIS350_Blackjack/bin</Jar>
+    <AuxClasspathEntry>/home/emerson/repos/CIS350_Blackjack/bin</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/emerson/repos/CIS350_Blackjack/gvsu.zip</AuxClasspathEntry>
+    <AuxClasspathEntry>/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar</AuxClasspathEntry>
+    <SrcDir>/home/emerson/repos/CIS350_Blackjack/src</SrcDir>
+    <Cloud id="edu.umd.cs.findbugs.cloud.doNothingCloud" online="false"></Cloud>
+  </Project>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Tue, 18 Oct 2016 12:03:38 -0400" total_classes="2" referenced_classes="34" total_bugs="0" total_size="384" num_packages="1" java_version="1.8.0_102" vm_version="25.102-b14" cpu_seconds="10.04" clock_seconds="50.42" peak_mbytes="497.27" alloc_mbytes="1024.00" gc_seconds="0.04">
+    <PackageStats package="" total_bugs="0" total_types="2" total_size="384">
+      <ClassStats class="BlackjackGame" sourceFile="BlackjackGame.java" interface="false" size="210" bugs="0"/>
+      <ClassStats class="GUI" sourceFile="GUI.java" interface="false" size="174" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="149" invocations="677" avgMicrosecondsPerInvocation="220" maxMicrosecondsPerInvocation="26340" standardDeviationMircosecondsPerInvocation="1062"/>
+      <ClassProfile name="de.tobject.findbugs.builder.FindBugs2Eclipse" totalMilliseconds="70" invocations="2" avgMicrosecondsPerInvocation="35189" maxMicrosecondsPerInvocation="55870" standardDeviationMircosecondsPerInvocation="20681"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="42" invocations="34" avgMicrosecondsPerInvocation="1245" maxMicrosecondsPerInvocation="9302" standardDeviationMircosecondsPerInvocation="2000"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="33" invocations="34" avgMicrosecondsPerInvocation="985" maxMicrosecondsPerInvocation="6352" standardDeviationMircosecondsPerInvocation="1466"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="22" invocations="643" avgMicrosecondsPerInvocation="34" maxMicrosecondsPerInvocation="777" standardDeviationMircosecondsPerInvocation="57"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="20" invocations="200" avgMicrosecondsPerInvocation="104" maxMicrosecondsPerInvocation="1416" standardDeviationMircosecondsPerInvocation="132"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="20" invocations="26" avgMicrosecondsPerInvocation="784" maxMicrosecondsPerInvocation="5722" standardDeviationMircosecondsPerInvocation="1410"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="15" invocations="677" avgMicrosecondsPerInvocation="22" maxMicrosecondsPerInvocation="144" standardDeviationMircosecondsPerInvocation="15"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="13" invocations="34" avgMicrosecondsPerInvocation="395" maxMicrosecondsPerInvocation="5457" standardDeviationMircosecondsPerInvocation="1112"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="12" invocations="26" avgMicrosecondsPerInvocation="472" maxMicrosecondsPerInvocation="2503" standardDeviationMircosecondsPerInvocation="580"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="11" invocations="26" avgMicrosecondsPerInvocation="425" maxMicrosecondsPerInvocation="2666" standardDeviationMircosecondsPerInvocation="660"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History>
+    <AppVersion sequence="0" timestamp="1476807041297" release="" codeSize="0" numClasses="0"/>
+  </History>
+</BugCollection>
