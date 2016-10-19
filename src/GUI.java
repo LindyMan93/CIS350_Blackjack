@@ -23,27 +23,58 @@ import edu.gvsu.GVpile;
  */
 public class GUI implements ActionListener {
 	
+	/** The Constant BLACKJACK. */
 	static final int BLACKJACK = 21;
 
+	/** The game. */
 	private BlackjackGame game;
+	
+	/** The window. */
 	private JFrame window;
 
+	/** The deal button. */
 	private JButton dealButton;
+	
+	/** The hit button. */
 	private JButton hitButton;
+	
+	/** The stand button. */
 	private JButton standButton;
+	
+	/** The double down button. */
 	private JButton doubleDownButton;
+	
+	/** The bet button. */
 	private JButton betButton;
 
+	/** The balance. */
 	private JLabel balance;
+	
+	/** The message. */
 	private JLabel message;
+	
+	/** The dealer count label. */
 	private JLabel dealerCountLabel;
+	
+	/** The player count label. */
 	private JLabel playerCountLabel;
 
+	/** The quit item. */
 	private JMenuItem quitItem;
+	
+	/** The new game item. */
 	private JMenuItem newGameItem;
+	
+	/** The hint item. */
 	private JMenuItem hintItem;
+	
+	/** The tray panel. */
 	private JPanel trayPanel = new JPanel();
+	
+	/** The player cards. */
 	private GVpile playerCards;
+	
+	/** The dealer cards. */
 	private GVpile dealerCards;
 
 	/**
@@ -189,14 +220,15 @@ public class GUI implements ActionListener {
 	}
 
 	/**
+	 * Action performed.
+	 *
+	 * @param e event from button press
 	 * @see java.awt.event.ActionListener#actionPerformed
 	 * (java.awt.event.ActionEvent)
 	 * 
 	 * This method is used to indicate what button is pressed.
 	 * Once the button is determined it will be follow the correct course
 	 * of action. Then all the messages will be updated.
-	 * 
-	 * @param e event from button press
 	 */
 	public final void actionPerformed(final ActionEvent e) {
 

@@ -1,6 +1,7 @@
 import edu.gvsu.GVcard;
 import edu.gvsu.GVpile;
 import javax.swing.JOptionPane;
+// TODO: Auto-generated Javadoc
 /**
  * This is the a game class for blackjack. It uses the edu.gvsu.* 
  * package. It is only used by the GUI class to run the program.
@@ -14,38 +15,92 @@ import javax.swing.JOptionPane;
  */
 
 public class BlackjackGame {
+	
+	/** The Constant FACECARD. */
 	private static final int FACECARD = 10;
+	
+	/** The Constant JACK. */
 	private static final int JACK = 11;
+	
+	/** The Constant QUEEN. */
 	private static final int QUEEN = 12;
+	
+	/** The Constant KING. */
 	private static final int KING = 13;
+	
+	/** The Constant ACE. */
 	private static final int ACE = 14;
+	
+	/** The Constant NEWACE. */
 	private static final int NEWACE = 11;
+	
+	/** The Constant ACE_DIFF. */
 	private static final int ACE_DIFF = 10;
+	
+	/** The Constant MIN_DECK_CARDS. */
 	private static final int MIN_DECK_CARDS = 15;
+	
+	/** The Constant DEALER_MIN_HAND. */
 	private static final int DEALER_MIN_HAND = 17;
+	
+	/** The Constant CARD_INDENT. */
 	private static final int CARD_INDENT = 20;
+	
+	/** The Constant BLACKJACK. */
 	private static final int BLACKJACK = 21;
+	
+	/** The Constant NOT_BLACKJACK. */
 	private static final int NOT_BLACKJACK = 22;
+	
+	/** The Constant MAX_BET. */
 	private static final int MAX_BET = 250;
+	
+	/** The Constant MIN_BET. */
 	private static final int MIN_BET = 5;
+	
+	/** The Constant CREDITS. */
 	private static final int CREDITS = 50;
+	
+	/** The player count. */
 	private int dealerCount, playerCount;
+	
+	/** The bet. */
 	private int creditBalance, bet;
+	
+	/** The number of acesd. */
 	private int numberOfAcesp = 0, numberOfAcesd = 0;
+	
+	/** The c. */
 	private GVcard c;
+	
+	/** The player cards. */
 	private GVpile deck, playerCards;
+	
+	/** The dealer temp cards. */
 	private GVpile playerTempCards, dealerCards, dealerTempCards;
+	
+	/** The message. */
 	private String message;
+	
+	/** The Constant NOT_ENOUGH. */
 	private static final String NOT_ENOUGH = "You dont have enough credits";
+	
+	/** The Constant TABLE_MIN. */
 	private static final String TABLE_MIN = "The table minimum is 5";
+	
+	/** The Constant TABLE_MAX. */
 	private static final String TABLE_MAX = "The table maximum is 250";
+	
+	/** The Constant VALID_INT. */
 	private static final String VALID_INT
 		= "Must enter an integer greater than 0";
+	
+	/** The Constant BET_MESS. */
 	private static final String BET_MESS
 		= "To change bet click bet. \nAmount to Bet: ";
 
 	/**
-	 * 
+	 * Instantiates a new blackjack game.
 	 */
 	public BlackjackGame() {
 
