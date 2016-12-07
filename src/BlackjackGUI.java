@@ -239,15 +239,15 @@ public class BlackjackGUI implements ActionListener {
 
 		JComponent buttonPressed = (JComponent) e.getSource();
 		if (buttonPressed == saveWinStreak) {
-			int bestWins = game.getBestGameWinStreak();
+			int bestW = game.getBestGameWinStreak();
 			File highScores = new File("HighScores.txt");
 			try {
-				if (highScores.exists() == false) {
+				if (!highScores.exists()) {
 					highScores.createNewFile();
 				}
 				PrintWriter out = new PrintWriter(highScores);
 				String init = JOptionPane.showInputDialog(null, "Initials");
-				out.append("Blackjack Win Streak by " + init + " of " + bestWins);
+				out.append("Blackjack Win Streak by " + init + " of " + bestW);
 				out.close();
 			} catch (IOException x) {
 				

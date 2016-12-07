@@ -1,7 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import java.awt.BorderLayout;
@@ -115,8 +114,9 @@ public class CentralGameGUI implements ActionListener {
 		
 	}
 
-	/* (non-Javadoc)
+	/** 
 	 * @see java.awt.event.ActionListener#actionPerformed
+	 * @param e
 	 */
 	public final void actionPerformed(final ActionEvent e) {
 		JComponent buttonPressed = (JComponent) e.getSource();

@@ -1,4 +1,3 @@
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -9,7 +8,6 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -154,26 +152,21 @@ public class MineSweeperPanel extends JPanel {
 	 * @see ButtonEvent
 	 */
 	private class ButtonListener implements ActionListener {
-		/*
+		/**
 		 * (non-Javadoc) This is a private class that will "listen" for what the
 		 * buttons are doing and return the result of which button was pressed
-		 * and how
+		 * and how.
 		 */
 		public void actionPerformed(final ActionEvent event) {
 
 			JComponent buttonPressed = (JComponent) event.getSource();
 			
 			if (buttonPressed == returnToHub) {
-				Container minesweeperFrame = quit.getParent();
 				new CentralGameGUI();
 			}
 			
 			String cheater = "You're a Cheater";
 			
-			if (buttonPressed == quitButton) {
-				System.out.println("Trying To Quit");
-				System.exit(0);
-			}
 			if (buttonPressed == reset) {
 				game.reset();
 			}
@@ -234,36 +227,36 @@ public class MineSweeperPanel extends JPanel {
 	 */
 	private class MouseEventHandler implements MouseListener {
 
-		/* (non-Javadoc)
+		/** (non-Javadoc).
 		 * @see java.awt.event.MouseListener#mousePressed
 		 */
 		public void mousePressed(final MouseEvent e) {
 
 		}
 
-		/* (non-Javadoc)
+		/** (non-Javadoc).
 		 * @see java.awt.event.MouseListener#mouseReleased
 		 */
 		public void mouseReleased(final MouseEvent e) {
 
 		}
 
-		/* (non-Javadoc)
+		/** (non-Javadoc).
 		 * @see java.awt.event.MouseListener#mouseEntered
 		 */
 		public void mouseEntered(final MouseEvent e) {
 
 		}
 
-		/* (non-Javadoc)
+		/** (non-Javadoc).
 		 * @see java.awt.event.MouseListener#mouseExited
 		 */
 		public void mouseExited(final MouseEvent e) {
 
 		}
 
-		/*
-		 * (non-Javadoc)
+		/**
+		 * (non-Javadoc).
 		 * 
 		 * @see
 		 * java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
