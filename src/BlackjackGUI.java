@@ -21,7 +21,7 @@ import edu.gvsu.GVpile;
  * @since 2016-10-18
  *
  */
-public class GUI implements ActionListener {
+public class BlackjackGUI implements ActionListener {
 	
 	/** The Constant BLACKJACK. */
 	static final int BLACKJACK = 21;
@@ -81,7 +81,7 @@ public class GUI implements ActionListener {
 	 * Constructor is called by static void main.
 	 * Sets up all parts of the GUI.
 	 */
-	public GUI() {
+	public BlackjackGUI() {
 
 		dealButton = new JButton("Deal");
 		hitButton = new JButton("Hit");
@@ -100,17 +100,6 @@ public class GUI implements ActionListener {
 
 		setupMenus();
 		setupFrame();
-	}
-
-	/**
-	 * This method will run always. It calls the GUI() constructor.
-	 * 
-	 * @param args Main arguments from commandline.
-	 */
-	public static void main(final String[] args) {
-
-		new GUI();
-
 	}
 
 	/**
@@ -234,7 +223,7 @@ public class GUI implements ActionListener {
 
 		JComponent buttonPressed = (JComponent) e.getSource();
 		if (buttonPressed == newGameItem) {
-			new GUI();
+			new BlackjackGUI();
 		}
 		if (buttonPressed == hintItem) {
 			displayHintCard();
