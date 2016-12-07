@@ -102,10 +102,10 @@ public class CentralGameGUI implements ActionListener {
 	public final void actionPerformed(final ActionEvent e) {
 		JComponent buttonPressed = (JComponent) e.getSource();
 		
-		if(buttonPressed == blackjackGame){
+		if (buttonPressed == blackjackGame) {
 			new BlackjackGUI();
 		}
-		if(buttonPressed == minesweeperGame){
+		if (buttonPressed == minesweeperGame) {
 			new MineSweeper();
 		}
 		
