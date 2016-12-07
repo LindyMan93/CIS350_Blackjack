@@ -98,6 +98,12 @@ public class BlackjackGame {
 	/** The Constant BET_MESS. */
 	private static final String BET_MESS
 		= "To change bet click bet. \nAmount to Bet: ";
+	
+	/** The win streak. */
+	private int winStreak = 0;
+	
+	/** The best win streak. */
+	private int bestWinStreak = 0;
 
 	/**
 	 * Instantiates a new blackjack game.
@@ -344,6 +350,24 @@ public class BlackjackGame {
 	public final int playerCountTotal() {
 		return playerCount;
 	}
+	
+	/**
+	 * Gets the win streak.
+	 *
+	 * @return the win streak
+	 */
+	public final int getWinStreak() {
+		return winStreak;
+	}
+	
+	/**
+	 * Gets the best game win streak.
+	 *
+	 * @return the best game win streak
+	 */
+	public final int getBestGameWinStreak() {
+		return bestWinStreak;
+	}
 
 	/**
 	 * This method will update the players bet. It will
@@ -427,6 +451,14 @@ public class BlackjackGame {
 				&& dealerCount > BLACKJACK);
 		boolean dealerBJ = (dealerCount == BLACKJACK);
 		boolean playerBJ = (playerCount == BLACKJACK && !dealerBJ);
+		if (playerBetterScore || dealerBustScore || playerBJ) {
+			winStreak++;
+			if (winStreak > bestWinStreak) {
+				bestWinStreak = winStreak;
+			}
+		} else {
+			winStreak = 0;
+		}
 		return playerBetterScore || dealerBustScore || playerBJ;
 	}
 

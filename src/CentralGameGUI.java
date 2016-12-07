@@ -8,6 +8,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -93,6 +96,22 @@ public class CentralGameGUI implements ActionListener {
 		gameHub.setResizable(false);
 
 		gameHub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		BufferedReader buff = null;
+		  try {
+		       buff = new BufferedReader(new FileReader("HighScores.txt"));
+		       String str;
+		       while ((str = buff.readLine()) != null) {
+		       highScores.append("\n" + str);
+		   }
+		 } catch (IOException e) {
+		  } finally {
+		    try { 
+		    	buff.close(); 
+		    	} catch (Exception ex) { 
+		    		
+		    	}
+		    }
 		
 	}
 

@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class MineSweeper.
@@ -14,13 +15,11 @@ public class MineSweeper {
 	public MineSweeper() {
 		// Starting MineSweeper GUI
 		JFrame frame = new JFrame("MineSweeper");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		MineSweeperPanel panel = new MineSweeperPanel();
 		frame.getContentPane().add(panel);
-
 		frame.pack();
 		frame.setVisible(true);
 
 	}
-
 }

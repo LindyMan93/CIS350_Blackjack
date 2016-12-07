@@ -1,3 +1,4 @@
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -5,10 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Random;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -26,7 +27,7 @@ public class MineSweeperPanel extends JPanel {
 	private Cell iCell;
 	
 	/** The test. */
-	private JButton quitButton, reset, test;
+	private JButton quitButton, reset, test, returnToHub, save;
 	
 	/** The game. */
 	private MineSweeperGame game;
@@ -49,6 +50,10 @@ public class MineSweeperPanel extends JPanel {
 	
 	/** The button size. */
 	private final int buttonSize = 50;
+	
+	/** The grid size. */
+	private final int gridSize = 5;
+	
 
 	/**
 	 * Instantiates a new mine sweeper panel.
@@ -59,6 +64,7 @@ public class MineSweeperPanel extends JPanel {
 		// one = new ImageIcon("");
 
 		game = new MineSweeperGame();
+		
 		boardSize = game.getBoardSize();
 		mineCount = game.getMineCount();
 		// Adding minefield Panel
@@ -82,8 +88,16 @@ public class MineSweeperPanel extends JPanel {
 		add(mineField);
 		// adding quit panel
 		quit = new JPanel();
+		quit.setLayout(new GridLayout(gridSize, 1));
+		returnToHub = new JButton("Game Hub");
+		returnToHub.addActionListener(new ButtonListener());
+		save = new JButton("Save Streak");
+		save.addActionListener(new ButtonListener());
+		
+		
 		quitButton = new JButton("Quit");
 		quitButton.addActionListener(new ButtonListener());
+		quitButton.setVisible(false);
 		reset = new JButton("Reset");
 		reset.addActionListener(new ButtonListener());
 		test = new JButton("Cheats");
@@ -91,6 +105,9 @@ public class MineSweeperPanel extends JPanel {
 		quit.add(quitButton);
 		quit.add(reset);
 		quit.add(test);
+		quit.add(returnToHub);
+		quit.add(save);
+		
 		add(quit);
 
 	}
@@ -123,6 +140,7 @@ public class MineSweeperPanel extends JPanel {
 		}
 
 	}
+	
 
 	/**
 	 * The listener interface for receiving button events.
@@ -144,7 +162,14 @@ public class MineSweeperPanel extends JPanel {
 		public void actionPerformed(final ActionEvent event) {
 
 			JComponent buttonPressed = (JComponent) event.getSource();
+			
+			if (buttonPressed == returnToHub) {
+				Container minesweeperFrame = quit.getParent();
+				new CentralGameGUI();
+			}
+			
 			String cheater = "You're a Cheater";
+			
 			if (buttonPressed == quitButton) {
 				System.out.println("Trying To Quit");
 				System.exit(0);

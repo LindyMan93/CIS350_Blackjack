@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.ImageIcon;
@@ -10,8 +11,13 @@ import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import edu.gvsu.GVpile;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is the GUI of the Blackjack game. It will create a 
  * new Blackjack game and all the buttons to play the game.
@@ -58,9 +64,15 @@ public class BlackjackGUI implements ActionListener {
 	
 	/** The player count label. */
 	private JLabel playerCountLabel;
+	
+	/** The win streak. */
+	private JLabel winStreak;
 
 	/** The quit item. */
 	private JMenuItem quitItem;
+	
+	/** The save win streak. */
+	private JMenuItem saveWinStreak;
 	
 	/** The new game item. */
 	private JMenuItem newGameItem;
@@ -97,6 +109,7 @@ public class BlackjackGUI implements ActionListener {
 		game = new BlackjackGame();
 		dealerCountLabel = new JLabel();
 		playerCountLabel = new JLabel();
+		winStreak = new JLabel();
 
 		setupMenus();
 		setupFrame();
@@ -124,6 +137,7 @@ public class BlackjackGUI implements ActionListener {
 		bottomPanel.add(betButton);
 		bottomPanel.add(balance);
 		bottomPanel.add(message);
+		bottomPanel.add(winStreak);
 		balance.setText("Credits: " + game.getCreditBalance());
 		message.setText(game.getMessage());
 
@@ -147,7 +161,7 @@ public class BlackjackGUI implements ActionListener {
 		window.setTitle("GVSU Blackjack");
 		window.setVisible(true);
 
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 		window.pack();
 
@@ -171,16 +185,17 @@ public class BlackjackGUI implements ActionListener {
 
 		hintItem = new JMenuItem("Hint Card");
 		hintItem.addActionListener(this);
-
 		newGameItem = new JMenuItem("New Game");
 		newGameItem.addActionListener(this);
 		quitItem = new JMenuItem("Quit");
 		quitItem.addActionListener(this);
-
+		saveWinStreak = new JMenuItem("Save Wins");
+		saveWinStreak.addActionListener(this);
+		
 		fileMenu.add(hintItem);
 		fileMenu.add(newGameItem);
 		fileMenu.add(quitItem);
-
+		fileMenu.add(saveWinStreak);
 	}
 
 	/**
@@ -195,6 +210,7 @@ public class BlackjackGUI implements ActionListener {
 		JLabel hintHolder = new JLabel(hintJPG);
 		hint.getContentPane().add(hintHolder);
 		hint.setVisible(true);
+		hint.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		hint.pack();
 	}
 	
@@ -222,6 +238,22 @@ public class BlackjackGUI implements ActionListener {
 	public final void actionPerformed(final ActionEvent e) {
 
 		JComponent buttonPressed = (JComponent) e.getSource();
+		if (buttonPressed == saveWinStreak) {
+			int bestWins = game.getBestGameWinStreak();
+			File highScores = new File("HighScores.txt");
+			try {
+				if (highScores.exists() == false) {
+					highScores.createNewFile();
+				}
+				PrintWriter out = new PrintWriter(highScores);
+				String init = JOptionPane.showInputDialog(null, "Initials");
+				out.append("Blackjack Win Streak by " + init + " of " + bestWins);
+				out.close();
+			} catch (IOException x) {
+				
+			}
+		}
+		
 		if (buttonPressed == newGameItem) {
 			new BlackjackGUI();
 		}
@@ -307,7 +339,7 @@ public class BlackjackGUI implements ActionListener {
 			standButton.setEnabled(false);
 			doubleDownButton.setEnabled(false);
 		}
-
+		winStreak.setText("Win Streak: " + game.getWinStreak());
 	}
 
 }
