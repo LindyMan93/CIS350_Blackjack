@@ -15,3 +15,9 @@ Release 1 Features:
     PlayerHand
     DealerHand
     
+Release 2 Features:
+  Add Central GameHub
+  Add Minesweeper Game
+  Create win streak High Scores for BJ
+  Move from page to page
+    

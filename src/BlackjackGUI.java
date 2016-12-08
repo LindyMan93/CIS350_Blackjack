@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.FileWriter;
 
 import edu.gvsu.GVpile;
 
@@ -240,13 +240,8 @@ public class BlackjackGUI implements ActionListener {
 		JComponent buttonPressed = (JComponent) e.getSource();
 		if (buttonPressed == saveWinStreak) {
 			int bestW = game.getBestGameWinStreak();
-			File highScores = new File("HighScores.txt");
 			try {
-				if (!highScores.exists()) {
-					@SuppressWarnings("unused")
-					boolean newFile = highScores.createNewFile();
-				}
-				PrintWriter out = new PrintWriter(highScores, "UTF-8");
+				FileWriter out = new FileWriter("HighScores.txt", true);
 				String init = JOptionPane.showInputDialog(null, "Initials");
 				out.append("Blackjack Win Streak by " + init + " of " + bestW);
 				out.close();
