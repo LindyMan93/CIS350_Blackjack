@@ -30,16 +30,16 @@ public class MineSweeperGame {
 	private int userBoardSize;
 	
 	/** The default size. */
-	private final int defaultSize = 10;
+	private static final int DEFAULT_SIZE = 10;
 	
 	/** The default mines. */
-	private final int defaultMines = 9;
+	private static final int DEFAULT_MINES = 9;
 	
 	/** The max size. */
-	private final int maxSize = 31;
+	private static final int MAX_SIZE = 31;
 	
 	/** The min size. */
-	private final int minSize = 2;
+	private static final int MIN_SIZE = 2;
 	
 	/** The Constant dBoardMessage. */
 	private static final String BOARDMESSAGE = "Default Board has been set";
@@ -53,10 +53,10 @@ public class MineSweeperGame {
 	public MineSweeperGame() {
 		String sizeInput = JOptionPane.showInputDialog(null, "Board Size");
 		int size = Integer.parseInt(sizeInput);
-		if (size <= minSize || size >= maxSize) {
+		if (size <= MIN_SIZE || size >= MAX_SIZE) {
 			JOptionPane.showMessageDialog(null, BOARDMESSAGE);
 			JOptionPane.showMessageDialog(null, validBoardMess);
-			size = defaultSize;
+			size = DEFAULT_SIZE;
 		}
 		String mineInput = JOptionPane.showInputDialog(null, "Mine Count");
 		int mines = Integer.parseInt(mineInput);
@@ -64,7 +64,7 @@ public class MineSweeperGame {
 			String lessBoardS = "Enter Values less than board size squared";
 			JOptionPane.showMessageDialog(null, "Default Mines have been set");
 			JOptionPane.showMessageDialog(null, lessBoardS);
-			mines = defaultMines;
+			mines = DEFAULT_MINES;
 		}
 
 		setBoardSize(size);
@@ -149,7 +149,7 @@ public class MineSweeperGame {
 	//
 	public final void select(final int row, final int col) {
 		if (board[row][col].getIsFlagged()) {
-			// return; // is flagged do nothing
+			return; // is flagged do nothing
 		} else {
 			if (board[row][col].getMineCount() == 0) {
 
@@ -185,7 +185,7 @@ public class MineSweeperGame {
 			for (int n = row - 1; n <= row + 1; n++) {
 				for (int c = col - 1; c <= col + 1; c++) {
 					if (n == row && c == col) {
-
+						continue;
 					} else {
 						spreadSpace(n, c);
 					}
@@ -208,11 +208,8 @@ public class MineSweeperGame {
 	 * @return true, if successful
 	 */
 	private boolean validCoordinates(final int row, final int col) {
-		if (row < 0 || col < 0 || row >= board.length || col >= board.length) {
-			return false;
-		} else {
-			return true;
-		}
+		return !(row < 0 || col < 0 
+				|| row >= board.length || col >= board.length);
 	}
 
 	/**
@@ -228,7 +225,7 @@ public class MineSweeperGame {
 		for (int n = row - 1; n <= row + 1; n++) {
 			for (int c = col - 1; c <= col + 1; c++) {
 				if (n == row && c == col) {
-
+					continue;
 				} else {
 					if (validCoordinates(n, c) && board[n][c].getIsMine()) {
 						neighborMineCount = neighborMineCount + 1;

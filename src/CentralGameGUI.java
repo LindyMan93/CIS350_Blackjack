@@ -30,10 +30,10 @@ public class CentralGameGUI implements ActionListener {
 	private JTextArea highScores;
 	
 	/** The frame size X. */
-	private final int frameSizeX = 500;
+	private static final int FRAME_SIZE_X = 500;
 	
 	/** The frame size Y. */
-	private final int frameSizeY = 300;
+	private static final int FRAME_SIZE_Y = 300;
 	
 	
 	
@@ -91,7 +91,7 @@ public class CentralGameGUI implements ActionListener {
 		gameHub.add(gameMenus);
 		gameHub.setTitle("Game Hub");
 		gameHub.setVisible(true);
-		gameHub.setSize(frameSizeX, frameSizeY);
+		gameHub.setSize(FRAME_SIZE_X, FRAME_SIZE_Y);
 		gameHub.setResizable(false);
 
 		gameHub.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -116,7 +116,7 @@ public class CentralGameGUI implements ActionListener {
 
 	/** 
 	 * @see java.awt.event.ActionListener#actionPerformed
-	 * @param e
+	 * @param e button pushed in frame
 	 */
 	public final void actionPerformed(final ActionEvent e) {
 		JComponent buttonPressed = (JComponent) e.getSource();

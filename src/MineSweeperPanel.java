@@ -18,6 +18,11 @@ import javax.swing.SwingUtilities;
  */
 public class MineSweeperPanel extends JPanel {
 	
+	/**
+	 * Default serial ID.
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The board. */
 	private JButton[][] board;
 	
@@ -41,16 +46,16 @@ public class MineSweeperPanel extends JPanel {
 	private int boardSize, mineCount;
 	
 	/** The frame size X. */
-	private final int frameSizeX = 1024;
+	private static final int FRAME_SIZE_X = 1024;
 	
 	/** The frame size Y. */
-	private final int frameSizeY = 768;
+	private static final int FRAME_SIZE_Y = 768;
 	
 	/** The button size. */
-	private final int buttonSize = 50;
+	private static final int BUTTON_SIZE = 50;
 	
 	/** The grid size. */
-	private final int gridSize = 5;
+	private static final int GRID_SIZE = 5;
 	
 
 	/**
@@ -69,13 +74,13 @@ public class MineSweeperPanel extends JPanel {
 		mineField = new JPanel();
 		board = new JButton[boardSize][boardSize];
 		mineField.setLayout(new GridLayout(boardSize, boardSize));
-		mineField.setSize(frameSizeX, frameSizeY);
+		mineField.setSize(FRAME_SIZE_X, FRAME_SIZE_Y);
 		MouseEventHandler meh = new MouseEventHandler();
 		// adding array of buttons depending on users size
 		// adding event listeners for all buttons
 		for (int row = 0; row < boardSize; row++) {
 			for (int col = 0; col < boardSize; col++) {
-				Dimension buttSize = new Dimension(buttonSize, buttonSize);
+				Dimension buttSize = new Dimension(BUTTON_SIZE, BUTTON_SIZE);
 				board[row][col] = new JButton("", emptyIcon);
 				board[row][col].setPreferredSize(buttSize);
 				board[row][col].addActionListener(new ButtonListener());
@@ -86,7 +91,7 @@ public class MineSweeperPanel extends JPanel {
 		add(mineField);
 		// adding quit panel
 		quit = new JPanel();
-		quit.setLayout(new GridLayout(gridSize, 1));
+		quit.setLayout(new GridLayout(GRID_SIZE, 1));
 		returnToHub = new JButton("Game Hub");
 		returnToHub.addActionListener(new ButtonListener());
 		save = new JButton("Save Streak");
@@ -156,6 +161,8 @@ public class MineSweeperPanel extends JPanel {
 		 * (non-Javadoc) This is a private class that will "listen" for what the
 		 * buttons are doing and return the result of which button was pressed
 		 * and how.
+		 * 
+		 * @param event ActionEvent on buttons
 		 */
 		public void actionPerformed(final ActionEvent event) {
 
@@ -229,6 +236,7 @@ public class MineSweeperPanel extends JPanel {
 
 		/** (non-Javadoc).
 		 * @see java.awt.event.MouseListener#mousePressed
+		 * @param e mouse press event
 		 */
 		public void mousePressed(final MouseEvent e) {
 
@@ -236,6 +244,7 @@ public class MineSweeperPanel extends JPanel {
 
 		/** (non-Javadoc).
 		 * @see java.awt.event.MouseListener#mouseReleased
+		 * @param e mouseReleased event
 		 */
 		public void mouseReleased(final MouseEvent e) {
 
@@ -243,6 +252,7 @@ public class MineSweeperPanel extends JPanel {
 
 		/** (non-Javadoc).
 		 * @see java.awt.event.MouseListener#mouseEntered
+		 * @param e mouse entered event
 		 */
 		public void mouseEntered(final MouseEvent e) {
 
@@ -250,6 +260,7 @@ public class MineSweeperPanel extends JPanel {
 
 		/** (non-Javadoc).
 		 * @see java.awt.event.MouseListener#mouseExited
+		 * @param e mouseExited event
 		 */
 		public void mouseExited(final MouseEvent e) {
 
@@ -260,6 +271,8 @@ public class MineSweeperPanel extends JPanel {
 		 * 
 		 * @see
 		 * java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+		 * 
+		 * @param event mouseClicked event
 		 */
 		public void mouseClicked(final MouseEvent event) {
 			JComponent buttonPressed = (JComponent) event.getSource();

@@ -243,7 +243,7 @@ public class BlackjackGUI implements ActionListener {
 			try {
 				FileWriter out = new FileWriter("HighScores.txt", true);
 				String init = JOptionPane.showInputDialog(null, "Initials");
-				out.write("Blackjack Win Streak by " + init + " of " + bestW + "\n");
+				out.append("Blackjack Win Streak by " + init + " of " + bestW);
 				out.close();
 			} catch (IOException x) {
 				
